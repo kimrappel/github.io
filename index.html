@@ -1,0 +1,26 @@
+.text.dp This is a continution of a pen of mine 
+  a(href='https://codepen.io/ghaste/pen/eYXNPOz' target="_blank") Drop-Caps
+  |  where I explored multiple ways to do drop-caps. I also expanded one of those out into its own Pen, because I loved how it looked: 
+  a(href="https://codepen.io/ghaste/pen/oNRgOVB" target="_blank") tessellated text
+  |  . This led to a fork by Ana Tudor to demonstrate how that can be accomplised by using 
+  a(href='https://codepen.io/thebabydino/pen/zYQGLqE' target='_blank') SVG
+  | . Lets call this a foray into text manipulation using SVG. I am still learning using SVG for that, so it is not as elegant.
+  
+  
+  
+svg(version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='600' height='100')
+  defs
+    link(xmlns='http://www.w3.org/1999/xhtml' href='http://fonts.googleapis.com/css?family=Ultra' rel='stylesheet' type='text/css')
+      
+        
+    filter#filter
+      feflood(flood-color='#FF0000' flood-opacity='0.9'  x='0' y='0' height='4.8rem' width='4.4rem'  result='RED')
+      feimage(xlink:href='data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%22100px%22%20height%3D%22200px%22%20%20%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3Cpattern%20id%3D%22pattern%22%20patternUnits%3D%22userSpaceOnUse%22%20width%3D%2210%22%20height%3D%2210%22%3E%0A%20%20%20%20%20%20%3Cpath%20fill%3D%22%23e61980%22%20d%3D%22M0%2C8.239V10h1.761L0%2C8.239z%22%2F%3E%0A%20%20%20%20%20%20%3Cpath%20fill%3D%22%23e61980%22%20d%3D%22M5%2C0l5%2C5l0%2C0V3.238L6.762%2C0H5z%22%2F%3E%0A%20%20%20%20%20%20%3Cpolygon%20fill%3D%22%23e61980%22%20points%3D%220%2C3.239%200%2C5%205%2C10%206.761%2C10%20%22%2F%3E%0A%20%20%20%20%20%20%3Cpolygon%20fill%3D%22%23e61980%22%20points%3D%221.762%2C0%200%2C0%2010%2C10%2010%2C8.238%20%22%2F%3E%0A%20%20%20%20%3C%2Fpattern%3E%0A%20%20%3C%2Fdefs%3E%0A%20%20%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22url%28%23pattern%29%22%20%2F%3E%0A%3C%2Fsvg%3E' x='0' y='0' width='100' height='200' result='IMAGEFILL')
+      
+      fecomposite(operator='in' in='RED' in2='SourceAlpha' result='RED_TEXT_MID')
+      fetile(in='IMAGEFILL' result='TILEPATTERN' x='0' y='0' width='4.4rem' height='4.8rem' )
+      fecomposite(operator='in' in='TILEPATTERN' in2='RED_TEXT_MID' result='RED_TEXT')
+      
+      feoffset(in="RED_TEXT" dx='4' dy='4' result='TEXT_OFF')
+      
+      fecomposite(operator='over' in='SourceGraphic')

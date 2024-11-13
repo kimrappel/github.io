@@ -1,0 +1,36 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-content: center;
+  font-family: system-ui, sans-serif;
+  font-size: 1.2rem;
+}
+svg {
+  display: none;
+}
+.text {
+  text-wrap: pretty;
+  line-height: 1.4;
+  width: min(50ch, 100% - 2rem);
+  margin: 0 auto;
+}
+
+.dp {
+  filter: url(#filter);
+  &:first-letter {
+    --clr: hsl(330 80% 81% / .5);
+    color: hsl(330 80% 51%);
+    font-weight: 900;
+  }
+  
+  &:first-letter {
+    -webkit-initial-letter: 3 2;
+    initial-letter: 3 2;
+  }
+}
+
+a {
+  color: #5eb0e5;
+  text-decoration:1px wavy underline color-mix(in hsl, currentcolor, #ee7762);
+}
